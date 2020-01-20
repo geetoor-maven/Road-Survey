@@ -154,10 +154,13 @@ public class surveyorumum extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
+
+
                 Intent intent = new Intent(surveyorumum.this, MapsActivity.class);
                 startActivity(intent);
-                Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(i);
+//                Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                startActivity(i);
                 savenama = nama.getText().toString();
                 saveulp = temuan.getText().toString();
                 savetemuan = text1.getText().toString();

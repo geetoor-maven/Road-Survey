@@ -516,46 +516,14 @@
                     android:id="@+id/detailkerja"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <TextView
-            android:id="@+id/textlokasi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:layout_below="@id/card7"
-            android:text="Lokasi"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColor="#000"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card8"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
-            app:cardCornerRadius="8dp"
-            android:layout_below="@id/textlokasi">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">
-                <EditText
-                    android:id="@+id/lokasi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="#fff"
-                    android:hint="Lokasi" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+
         //uraianpekerjaan
         <TextView
             android:id="@+id/texturaianpekerjaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:layout_below="@id/card8"
+            android:layout_below="@id/card7"
             android:text="Pekerjaan"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"

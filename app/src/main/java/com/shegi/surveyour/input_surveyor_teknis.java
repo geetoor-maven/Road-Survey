@@ -222,7 +222,6 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
 
 
         radioGroup = findViewById(R.id.radiogroup);
-        lokasi = findViewById(R.id.lokasi);
         keterangan = findViewById(R.id.keterangan);
         latitude.setText(getIntent().getStringExtra("Latitude"));
         longtitude.setText(getIntent().getStringExtra("Longtitude"));
@@ -262,8 +261,6 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
             public void onClick(View v) {
                 Intent intent = new Intent(input_surveyor_teknis.this,Mapsurveyorteknis.class);
                 startActivity(intent);
-                Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(i);
 
                /* saveulp = txt5.getText().toString();
                 savefeder = feder.getText().toString();

@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class Mapsurveyorteknis extends FragmentActivity implements OnMapReadyCal
     TextView latitudee,longtitudee;
     double lat= -5.135399;
     double lon = 119.423790;
+    boolean gpsstatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,28 @@ public class Mapsurveyorteknis extends FragmentActivity implements OnMapReadyCal
         Toast.makeText(Mapsurveyorteknis.this,"Silahkan klik tombol pojok kanan paling atas untuk mendapatkan lokasi",Toast.LENGTH_SHORT).show();
 
         LocationManager locationmanager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        GPSstatus();
+        if (gpsstatus == true){
+
+        }else {
+//            Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//            startActivity(i);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(Mapsurveyorteknis.this);
+            dialog.setTitle("Gps tidak aktif");
+            dialog.setMessage("Silahkan mengaktifkan terlebih dahulu");
+            dialog.setCancelable(true);
+            dialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(i);
+                }
+            });
+            AlertDialog alertDialog = dialog.create();
+            alertDialog.show();
+            Toast.makeText(Mapsurveyorteknis.this,"Silahkan klik tombol pojok kanan paling atas untuk mendapatkan lokasi",Toast.LENGTH_SHORT).show();
+        }
 
         pilihlokasi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +179,11 @@ public class Mapsurveyorteknis extends FragmentActivity implements OnMapReadyCal
                 break;
         }
 
+
+    }
+    public void GPSstatus(){
+        LocationManager locationmanager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        gpsstatus = locationmanager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
     }
 }

@@ -15,6 +15,7 @@ import android.location.Address;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private FusedLocationProviderClient client;
     double lat= -5.135399;
     double lon = 119.423790;
+    boolean gpsstatus;
     TextView latitudee,longtitudee;
 //    double latt = Double.valueOf(String.valueOf(latitudee));
 //    double lonn = Double.valueOf(String.valueOf(longtitudee));
@@ -56,6 +58,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latitudee = findViewById(R.id.latitude);
         longtitudee = findViewById(R.id.longitude);
 
+        GPSstatus();
+        if (gpsstatus == true){
+        }else {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MapsActivity.this);
+            dialog.setTitle("Gps tidak aktif");
+            dialog.setMessage("Silahkan mengaktifkan terlebih dahulu");
+            dialog.setCancelable(true);
+            dialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                     startActivity(i);
+                }
+            });
+            AlertDialog alertDialog = dialog.create();
+            alertDialog.show();
+            Toast.makeText(MapsActivity.this,"Silahkan klik tombol pojok kanan paling atas untuk mendapatkan lokasi",Toast.LENGTH_SHORT).show();
+        }
 
 
 
@@ -165,6 +185,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
         }
 
+
+    }
+
+    public void GPSstatus(){
+        LocationManager locationmanager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        gpsstatus = locationmanager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
     }
 }

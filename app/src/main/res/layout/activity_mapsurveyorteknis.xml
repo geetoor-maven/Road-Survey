@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        tools:context=".Mapsurveyorteknis"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="#000"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:text="latitude"
+            android:id="@+id/latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+        <TextView
+            android:textColor="#000"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:text="long"
+            android:id="@+id/longitude"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            />
+        <RelativeLayout
+            android:background="@drawable/bgbawahlogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <Button
+                android:id="@+id/pilihlokasi"
+                android:layout_alignParentLeft="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_style"
+                android:text="Pilih Lokasi"
+                android:textAllCaps="false"
+                android:textColor="#fff"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

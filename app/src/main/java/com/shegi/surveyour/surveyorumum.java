@@ -334,7 +334,23 @@ public class surveyorumum extends AppCompatActivity {
             AlertDialog alertDialog = dialog.create();
             alertDialog.show();
 
-        } else {
+        }else if (detail_kerja.isEmpty() && alamatt.isEmpty()){
+            loading.dismiss();
+            AlertDialog.Builder dialog = new AlertDialog.Builder(surveyorumum.this);
+            dialog.setTitle("Pastikan data sudah lengkap....!!!");
+            dialog.setMessage("Silahkan input kembali ");
+            dialog.setCancelable(true);
+            dialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                    loading.dismiss();
+                }
+            });
+            AlertDialog alertDialog = dialog.create();
+            alertDialog.show();
+        }
+        else {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, objek.registumum(), new Response.Listener<String>() {
                 @Override

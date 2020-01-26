@@ -23,6 +23,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
@@ -42,17 +44,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 public class edit_verifikasi_data_tim_pemelihara extends AppCompatActivity implements SearchableSpinner.OnItemSelectedListener {
-TextView text,textid,munculuraian,munculmaterial,munculsatuan;
+TextView text,textid,txt_waktukerjan,txt_jenismaterial, txt_tglselesai;
 ImageView muncul,atas,bawah;
 EditText volume;
 Button simpan,pilih_file;
+RadioGroup radioedit,radio_jenismaterial;
+RadioButton radiosiang,radiomalam,radiosabtu,radiolibur,radioButton,radioButtonjenis;
 SearchableSpinner spinneruraian,spinnermaterial,spinnersatuan;
     private AdView mAdView,mAdView1,mAdView2;
     public static List<String> lst= null;
@@ -109,7 +115,14 @@ public  edit_verifikasi_data_tim_pemelihara(){
         mAdView2.loadAd(adRequest2);
         spinnersatuan.setOnItemSelectedListener(this);
 
-
+        radioedit = findViewById(R.id.radiogrupedit);
+        radiosiang = findViewById(R.id.radiosiang);
+        radiomalam = findViewById(R.id.radiomalam);
+        radiosabtu = findViewById(R.id.radiosabtu);
+        radiolibur = findViewById(R.id.radiolibur);
+        radio_jenismaterial = findViewById(R.id.radio_jenismaterial);
+        txt_jenismaterial = findViewById(R.id.txt_jenismaterial);
+        txt_waktukerjan = findViewById(R.id.txt_waktukerja);
         volume = findViewById(R.id.jmlvolume);
         simpan = findViewById(R.id.btnsimpan);
         pilih_file = findViewById(R.id.pilihfilebutton);
@@ -118,9 +131,12 @@ public  edit_verifikasi_data_tim_pemelihara(){
         textid = findViewById(R.id.txtid);
         atas = findViewById(R.id.imgatas);
         bawah = findViewById(R.id.imgbawah);
-        munculuraian = findViewById(R.id.munculuraian);
-        munculmaterial = findViewById(R.id.munculmaterial);
-        munculsatuan = findViewById(R.id.munculsatuan);
+        txt_tglselesai = findViewById(R.id.txt_tglselesai);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String tanggalsekarang = simpleDateFormat.format(new Date());
+        txt_tglselesai.setText(tanggalsekarang);
+
 
         textid.setText(getIntent().getStringExtra("id"));
 
@@ -162,6 +178,17 @@ public  edit_verifikasi_data_tim_pemelihara(){
             }
         }
 
+    }
+
+    public void onClick(View v){
+            int selectradio = radioedit.getCheckedRadioButtonId();
+            radioButton = findViewById(selectradio);
+            txt_waktukerjan.setText(radioButton.getText());
+    }
+    public void onClickJenis(View v){
+        int pilih = radio_jenismaterial.getCheckedRadioButtonId();
+        radioButtonjenis = findViewById(pilih);
+        txt_jenismaterial.setText(radioButtonjenis.getText());
     }
 
     @Override
@@ -319,7 +346,9 @@ public  edit_verifikasi_data_tim_pemelihara(){
         final String satuan_kerja = this.spinnersatuan.getSelectedItem().toString().trim();
         final String volumee = this.volume.getText().toString().trim();
         final String material = this.spinnermaterial.getSelectedItem().toString().trim();
-
+        final String waktu_kerja = this.txt_waktukerjan.getText().toString().trim();
+        final String jenis_material = this.txt_jenismaterial.getText().toString().trim();
+        final String tgl_Selsai = this.txt_tglselesai.getText().toString();
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, objek.editdata(), new Response.Listener<String>() {
@@ -380,6 +409,9 @@ public  edit_verifikasi_data_tim_pemelihara(){
                 params.put("satuan_material",satuan_kerja);
                 params.put("vol_kerja",volumee);
                 params.put("material",material);
+                params.put("waktu_kerja",waktu_kerja);
+                params.put("jenis_material",jenis_material);
+                params.put("tgl_selesai",tgl_Selsai);
                 params.put("foto_sesudah",imagee);
 
                 return params;

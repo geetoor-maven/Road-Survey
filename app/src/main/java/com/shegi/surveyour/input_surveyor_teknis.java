@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,9 +21,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.renderscript.ScriptGroup;
+import android.text.InputType;
 import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -192,6 +196,30 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String tanggalsekarang = simpleDateFormat.format(new Date());
         tanggal.setText(tanggalsekarang);
+
+        //set click nama
+        txtnama.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String kordinat = latitude.getText().toString();
+                if (kordinat.isEmpty()){
+                    InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(input_surveyor_teknis.this);
+                    dialog.setTitle("Titik kordinat belum di input....!!");
+                    dialog.setMessage("Silahkan input ulang ");
+                    dialog.setCancelable(true);
+                    dialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alertDialog = dialog.create();
+                    alertDialog.show();
+                }
+            }
+        });
 
 
         //permision camera android 6 >
@@ -698,7 +726,7 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
     private void Regist() {
         //progres dialog
         final ProgressDialog loading = ProgressDialog.show(this, "Sedang mengirim....", "Mohon tunggu...", false, false);
-        //finalllll
+        //finalllll nilai
         final String namaa = this.txtnama.getText().toString().trim();
         final String ulpp = this.txt5.getText().toString().trim();
         final String federr = this.feder.getText().toString().trim();
@@ -746,7 +774,7 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
                         String success = jsonObject.getString("success");
                         if (success.equals("1")) {
                             Toast.makeText(input_surveyor_teknis.this, "Register Success", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(input_surveyor_teknis.this, BgDataTersimpan.class);
+                            Intent intent = new Intent(input_surveyor_teknis.this, Bgdatatersimpanteknis.class);
                             startActivity(intent);
                             loading.dismiss();
                             txt5.setText("Pilih Ulp");
@@ -761,7 +789,6 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
                             tanggal.setText("2019-1-1");
                             latitude.setText("");
                             longtitude.setText("");
-                            lokasi.setHint("Lokasi Pekerjaan");
                             keterangan.setHint("Keterangan");
                         }
                     } catch (JSONException e) {

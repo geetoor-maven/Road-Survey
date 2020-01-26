@@ -1,16 +1,13 @@
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
         android:id="@+id/relativeumum"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
         tools:context=".edit_verifikasi_data_tim_pemelihara">
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,26 +25,28 @@
                 />
         </LinearLayout>
         <TextView
+            android:id="@+id/txt_tglselesai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txt_jenismaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txt_waktukerja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/telahselesai"
             android:visibility="gone"
             android:text="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/munculuraian"
-            android:visibility="gone"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/munculmaterial"
-            android:visibility="gone"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/munculsatuan"
-            android:visibility="gone"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,24 +63,24 @@
             android:id="@+id/adViewedit1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
             android:visibility="gone"
             />
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewedit2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
             android:visibility="gone"
             />
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewedit3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
             android:visibility="gone"
             />
         <androidx.cardview.widget.CardView
@@ -272,14 +271,129 @@
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/waktukerja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:layout_below="@id/card5"
+            android:text="Waktu kerja"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="#000"/>
+        //siangmalamsore
+        <LinearLayout
+            android:id="@+id/relativeradio"
+            android:layout_below="@id/waktukerja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RadioGroup
+            android:id="@+id/radiogrupedit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RadioButton
+                    android:id="@+id/radiomalam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="Malam"
+                    android:buttonTint="#035B71"
+                    android:textSize="20dp"
+                    android:onClick="onClick"
+                    android:layout_below="@id/radiosiang"/>
+
+            <RadioButton
+                android:id="@+id/radiosiang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="#035B71"
+                android:onClick="onClick"
+                android:text="Normal"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/radiosabtu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/radiogrupedit"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="#035B71"
+                android:onClick="onClick"
+                android:text="Sabtu/Minggu"
+                android:textSize="20dp" />
+                <RadioButton
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/radiolibur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Libur Nasional"
+                    android:textSize="20dp"
+                    android:onClick="onClick"
+                    android:buttonTint="#035B71"
+                    android:layout_below="@id/radiosabtu"
+                    />
 
 
+        </RadioGroup>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_jenismaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:layout_below="@id/relativeradio"
+            android:text="Jenis material"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="#000"/>
+        <RadioGroup
+            android:id="@+id/radio_jenismaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_jenismaterial">
+            <RadioButton
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="left"
+                android:id="@+id/radio_matpln"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mat PLN"
+                android:textSize="20dp"
+                android:onClick="onClickJenis"
+                android:buttonTint="#035B71"
+                />
+            <RadioButton
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="left"
+                android:id="@+id/radio_exbongkaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Ex bongkaran"
+                android:onClick="onClickJenis"
+                android:buttonTint="#035B71"
+                />
+            <RadioButton
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="left"
+                android:id="@+id/radio_matrekanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mat rekanan"
+                android:textSize="20dp"
+                android:onClick="onClickJenis"
+                android:buttonTint="#035B71"
+                />
+        </RadioGroup>
         <TextView
             android:id="@+id/uploadfototerbaru"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:layout_below="@id/card5"
+            android:layout_below="@id/radio_jenismaterial"
             android:text="Upload Foto Terbaru"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"

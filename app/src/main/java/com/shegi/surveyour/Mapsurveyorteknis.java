@@ -137,19 +137,6 @@ public class Mapsurveyorteknis extends FragmentActivity implements OnMapReadyCal
 
     }
 
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-
-    public void onProviderEnabled(String provider) {
-
-    }
-
-
-    public void onProviderDisabled(String provider) {
-
-    }
 
 
 

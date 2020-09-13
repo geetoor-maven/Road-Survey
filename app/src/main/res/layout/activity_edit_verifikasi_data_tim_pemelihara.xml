@@ -28,7 +28,8 @@
             android:id="@+id/txt_tglselesai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:visibility="gone"/>
         <TextView
             android:visibility="gone"
             android:id="@+id/txt_jenismaterial"
@@ -298,7 +299,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="Malam"
+                    android:text="Normal"
                     android:buttonTint="#035B71"
                     android:textSize="20dp"
                     android:onClick="onClick"
@@ -311,7 +312,7 @@
                 android:layout_marginLeft="30dp"
                 android:buttonTint="#035B71"
                 android:onClick="onClick"
-                android:text="Normal"
+                android:text="Malam"
                 android:textSize="20dp" />
 
             <RadioButton

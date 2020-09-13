@@ -25,11 +25,15 @@ public class TableHelper{
         spaceCrafts s;
 
 
+
+
         for (int i=0;i<spacecrafts.size();i++) {
             s = spacecrafts.get(i);
             spaceProbes[i][0] = s.getId();
             spaceProbes[i][1] = s.getTgl_masuk();
             spaceProbes[i][2] = s.getTgl_exp();
+
+
 
 
         }

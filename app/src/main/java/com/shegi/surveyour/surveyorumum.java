@@ -87,7 +87,7 @@ public class surveyorumum extends AppCompatActivity {
         tanggal = findViewById(R.id.tanggal);
         pilihfle = findViewById(R.id.btnpilihfile);
         kirim = findViewById(R.id.kirim);
-        text = (TextView) findViewById(R.id.textsudahdipilih);
+        text = findViewById(R.id.textsudahdipilih);
         text1 = findViewById(R.id.temuan);
         cardView = findViewById(R.id.visibiliti2);
         cardView1 = findViewById(R.id.visibiliti3);

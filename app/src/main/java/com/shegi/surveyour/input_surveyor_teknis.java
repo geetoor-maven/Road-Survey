@@ -928,7 +928,12 @@ public class input_surveyor_teknis extends AppCompatActivity implements AdapterV
         return encodeImage;
     }
 
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(input_surveyor_teknis.this,surveyorteknis.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
 
 }
